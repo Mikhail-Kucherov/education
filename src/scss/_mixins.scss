@@ -1,0 +1,39 @@
+@mixin media_interval($min, $max) {
+  @if $max == 0 {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else if $min == 0 {
+    @media (max-width: ($max - 1px)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $min) and (max-width: ($max - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin font-size_default {
+  font-size: 16px;
+  line-height: 22px;
+
+  @include media_interval(0px, 1024px) {
+    font-size: 14px;
+    line-height: 19px;
+  }
+}
+
+@mixin font-size_h3 {
+  font-size: 26px;
+  line-height: 32px;
+
+  @include media_interval(0, 1024px) {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+// переменные
+$title: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$default: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;

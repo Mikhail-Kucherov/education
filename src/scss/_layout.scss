@@ -1,0 +1,172 @@
+@import "_color";
+@import "_fonts";
+@import "_mixins";
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+*:focus {
+  outline: none;
+  border: 1px solid $white;
+}
+
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: $default;
+  font-size: 16px;
+  margin: 0;
+  min-height: 100vh;
+  color: $default-grey;
+  overflow-x: hidden;
+  /*
+    Убирает сглаживание шрифтов в mac os, чтобы шрифты не были жирнее чем в макете
+  */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: $default-grey;
+
+  &:focus {
+    border: none;
+  }
+
+  &:not(.not-std-link):not(.black-button):hover,
+  &:not(.not-std-link):not(.black-button):focus {
+    opacity: 0.5;
+    transition: opacity .2s ease-out;
+  }
+
+  &:not(.not-std-link):not(.black-button):active {
+    opacity: 0.2;
+  }
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: $default;
+
+  &:hover,
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+img,
+iframe {
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-family: $title;
+  font-size: 40px;
+  line-height: 49px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  @include media_interval(768px, 1024px) {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  @include media_interval(0, 768px) {
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+
+h2 {
+  font-family: $title;
+  font-size: 38px;
+  line-height: 46px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  @include media_interval(768px, 1024px) {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  @include media_interval(0, 768px) {
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+
+h3 {
+  font-family: $title;
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  @include media_interval(0, 768px) {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+
+main {
+  flex: 1 0 auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  opacity: 0;
+}
+
+.wrapper {
+  max-width: 1400px;
+  padding: 0 110px;
+  margin: 0 auto;
+
+  @include media_interval(768px, 1024px) {
+    padding: 0 60px;
+  }
+
+  @include media_interval(0, 768px) {
+    padding: 0 20px;
+  }
+}
